@@ -5,13 +5,27 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0" metadata-complete="true">
 
+  <!-- Register Servlet Mapping -->
   <servlet>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.weebtech.blog.servlets.RegisterServlet</servlet-class>
   </servlet>
 
+  <!-- Login Servlet Mapping -->
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.weebtech.blog.servlets.LoginServlet</servlet-class>
+  </servlet>
+
+  <!-- Register Servlet Url Pattern -->
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- Login Servlet Url Pattern -->
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
 </web-app>

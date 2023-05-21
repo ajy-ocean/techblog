@@ -1,3 +1,5 @@
+<%@page isErrorPage="true"%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,6 +25,13 @@
                                 <!-- CSS - SECTION-->
                     </head>
                         <body>
-                            
+                            <div class="container text-center" style="padding-top: 23px;">
+                                <img src="./image/error.png" class="img-fluid" alt="Error...." style="width:350px;">
+                                <h3 class="display-4 ">Sorry ! Something went wrong</h3>
+
+                                <%-- Showing error --%>
+                                <%= exception%>
+                                <a href="./index.jsp" class="btn primary-background btn-lg mt-3 text-dark">Home</a>
+                            </div>
                         </body>
                     </html>
