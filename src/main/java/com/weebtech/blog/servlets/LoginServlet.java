@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.weebtech.blog.dao.UserDao;
+import com.weebtech.blog.entities.Message;
 import com.weebtech.blog.entities.User;
 import com.weebtech.blog.helper.ConnectionProvider;
 
@@ -37,7 +38,14 @@ public class LoginServlet extends HttpServlet {
             User user = dao.getUserByEmailAndPassword(userEmail, userPassword);
             if(user == null){
                 //Login Error...........
-                out.println("<h1>Invalid Details.. try again</h1>");
+                // out.println("<h1>Invalid Details.. try again</h1>");
+
+                Message msg = new Message("Invalid Details! Try again","error","alert-danger");
+
+                HttpSession httpSession = request.getSession();
+                httpSession.setAttribute("msg", msg);
+
+                response.sendRedirect("login.jsp");
 
             }else{
                 //Login success

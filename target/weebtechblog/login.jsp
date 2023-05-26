@@ -1,3 +1,5 @@
+<%@page import="com.weebtech.blog.entities.Message"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +41,23 @@
                             <br>
                             <p>Login here</p>
                         </div>
+
+                        <%
+                            Message msg = (Message)session.getAttribute("msg");
+                            if(msg != null){
+                        %>
+                            <div class="alert <%= msg.getCssClass() %>" role="alert">
+                                <%= 
+                                    msg.getContent()
+                                %>
+                            </div>
+                        
+                        <%
+                            session.removeAttribute("msg");
+                            }
+
+                        %>
+
                         <div class="card-body">
                             <form action="LoginServlet" method="post">
                                 <div class="form-group">
