@@ -68,7 +68,7 @@
           </ul>
           <ul class="navbar-nav mr-right">
               <li class="nav-item">
-              <a class="nav-link" href="./registerpage.jsp"><span class="fa fa-user-circle"></span> <%= user.getName() %></a>
+              <a class="nav-link" href="#!" data-toggle="modal" data-target="#profile-modal"><span class="fa fa-user-circle"></span> <%= user.getName() %></a>
             </li>   
 
             <li class="nav-item">
@@ -78,6 +78,62 @@
         </div>
       </nav>
     <%-- navbar-end --%>
+
+      <%-- Profile Modal - Start --%>
+
+        <div class="modal fade" id="profile-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header primary-background text-dark text-center">
+        <h5 class="modal-title" id="exampleModalLabel"> weectech </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+              <div class = "container text-center">
+                  <img src="./pics/<%= user.getProfile()%>" class="img-fluid" style="border-radius:50%; max-width:150px;">
+                  <h5 class="modal-title mt-3" id="exampleModalLabel"> 
+                    <%= user.getName() %>
+
+                    <%-- User Details --%>
+                    <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Id</th>
+                        <td> <%= user.getId()%> </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Email</th>
+                        <td> <%= user.getEmail()%> </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Gender</th>
+                        <td> <%= user.getGender()%> </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">About</th>
+                        <td> <%= user.getAbout()%> </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Registered on</th>
+                        <td> <%= user.getDateTime().toString() %> </td>
+                      </tr>
+                    </tbody>
+                    </table>
+                    
+                  </h5>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+     
+      <%-- Profile Modal - End --%>
 
       <!-- JAVASCRIPT-SECTION -->
               <!-- BOOTSTRAP-4:- JAVASCRIPT-LINK -->

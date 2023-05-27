@@ -1,4 +1,0 @@
-com/weebtech/blog/entities/User.class
-com/weebtech/blog/servlets/RegisterServlet.class
-com/weebtech/blog/helper/ConnectionProvider.class
-com/weebtech/blog/dao/UserDao.class
