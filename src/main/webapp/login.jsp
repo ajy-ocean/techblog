@@ -73,7 +73,7 @@
                                         placeholder="Password">
                                 </div>
                                 <div class="container text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-warning">Submit</button>
                                 </div>
                             </form>
                         </div>

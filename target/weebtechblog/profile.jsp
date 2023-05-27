@@ -85,7 +85,7 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header primary-background text-dark text-center">
-        <h5 class="modal-title" id="exampleModalLabel"> weectech </h5>
+        <h5 class="modal-title" id="exampleModalLabel"> weebtech </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -95,8 +95,10 @@
                   <img src="./pics/<%= user.getProfile()%>" class="img-fluid" style="border-radius:50%; max-width:150px;">
                   <h5 class="modal-title mt-3" id="exampleModalLabel"> 
                     <%= user.getName() %>
+                   </h5>
 
                     <%-- User Details --%>
+                  <div id="profile-details">
                     <table class="table">
                     <tbody>
                       <tr>
@@ -121,13 +123,73 @@
                       </tr>
                     </tbody>
                     </table>
-                    
-                  </h5>
+                  </div>
+
+                  <%-- Profile-editing --%>
+                  <div id="profile-edit" style="display: none;">
+                    <h3 class="mt-2">Edit cautiously</h3>
+                    <form action="EditServlet" method="post" enctype="multipart/form-data">
+                      <table class="table">
+                       <tr>
+                          <td>Id</td>
+                          <td> <%= user.getId()%> </td>
+                        </tr>
+
+                         <tr>
+                          <td>Email</td>
+                          <td> 
+                            <input class="form-control" type="email" name="userEmail" value="<%= user.getEmail()%>"> 
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>Name</td>
+                          <td> 
+                            <input class="form-control" type="text" name="userName" value="<%= user.getName()%>"> 
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>Password</td>
+                          <td> 
+                            <input class="form-control" type="password" name="userPassword" value="<%= user.getPassword()%>"> 
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>Gender</td>
+                          <td> <%= user.getGender().toUpperCase() %> </td>
+                        </tr>
+
+                        <tr>
+                          <td>About</td>
+                          <td> 
+                            <textarea rows="2" name="userAbout" class="form-control"><%=user.getAbout()%>
+                            </textarea>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>New Profile</td>
+                          <td> 
+                            <input type="file" name="userPic" class="form-control">
+                          </td>
+                        </tr>
+                      </table>
+
+                      <div class="container">
+                        <button type="submit" class="btn btn-warning">
+                          Save
+                        </button>
+                      </div>
+
+                    </form> 
+                  </div>
               </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Edit</button>
+          <button id="edit-profile-button" type="button" class="btn btn-warning">Edit</button>
         </div>
       </div>
     </div>
@@ -150,6 +212,28 @@
               <!-- BOOTSTRAP-4:- JAVASCRIPT-LINK -->
 
               <script src="./js/myjs.js"></script>
+
+              <script>
+                $(document).ready(function(){
+                  let editStatus = false;
+
+                  $('#edit-profile-button').click(function(){
+                    if(editStatus == false){
+                        //hiding and showing form after edit button click
+                        $("#profile-details").hide()
+                        $("#profile-edit").show()
+                        editStatus = true;
+                        $(this).text("Back")
+                    }else{
+                      //showing and hiding form if condition is not true
+                        $("#profile-details").show()
+                        $("#profile-edit").hide()
+                        editStatus = false;
+                        $(this).text("Edit")
+                    }
+                  })
+                });
+              </script>
 
               <!-- JAVASCRIPT-SECTION -->
 </body>

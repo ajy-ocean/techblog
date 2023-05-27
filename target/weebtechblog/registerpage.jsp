@@ -71,7 +71,8 @@
                             </div>
 
                             <div class="form-group">
-                            <textarea name="about" class="form-control" rows="5" placeholder="Enter something about yourself..."></textarea>
+                            <textarea name="about" class="form-control" rows="5" placeholder="Enter something about yourself...">
+                            </textarea>
                             </div>
                             
                             <div class="form-check">
@@ -86,7 +87,7 @@
                             <br>
                             </div>
 
-                            <button id="submit-btn" type="submit" class="btn btn-primary">Submit</button>
+                            <button id="submit-btn" type="submit" class="btn btn-warning">Submit</button>
                         </form>
                     </div>
                 </div>
