@@ -80,7 +80,7 @@
                                 <label class="form-check-label" for="exampleCheck1">Agree terms and conditons</label>
                             </div>
                             <br>
-                         
+
                             <div id="loader" class="container text-center" style="display: none;">
                                 <span class="fa fa-refresh fa-spin fa-3x"></span>
                                 <h4>Please wait...</h4>

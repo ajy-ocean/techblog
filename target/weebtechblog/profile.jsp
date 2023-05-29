@@ -1,3 +1,4 @@
+<%@page import="com.weebtech.blog.entities.Message"%>
 <%@page errorPage="./errorpage.jsp" %>
 
 <%@page import="com.weebtech.blog.entities.User" %>
@@ -79,6 +80,21 @@
       </nav>
     <%-- navbar-end --%>
 
+              <%
+                Message msg = (Message)session.getAttribute("msg");
+                if(msg != null){
+              %>
+                <div class="alert <%= msg.getCssClass() %>" role="alert">
+                  <%= 
+                      msg.getContent()
+                  %>
+                </div>
+                        
+              <%
+                session.removeAttribute("msg");
+                }
+              %>
+     
       <%-- Profile Modal - Start --%>
 
         <div class="modal fade" id="profile-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
