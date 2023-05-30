@@ -47,6 +47,8 @@ public class EditServlet extends HttpServlet {
             user.setName(userName);
             user.setPassword(userPassword);
             user.setAbout(userAbout);
+
+            String oldFile = user.getProfile();
             user.setProfile(picName);
 
             // Updata user data to db
@@ -55,9 +57,17 @@ public class EditServlet extends HttpServlet {
 
             if (value) {
                 // Getting pics folder paths
-                String path = "/home/blankocean/codingstuff/myJavaProjects/weebtechblog/src/main/webapp/pics"+File.separator+user.getProfile();
+                String path = "/home/blankocean/codingstuff/myJavaProjects/weebtechblog/src/main/webapp/pics"
+                        + File.separator + user.getProfile();
 
-                Helper.deleteFile(path);
+                // Delete code
+                String oldFilePath = "/home/blankocean/codingstuff/myJavaProjects/weebtechblog/src/main/webapp/pics"
+                        + File.separator + oldFile;
+
+                
+                if(!oldFile.equals("default.png")){
+                    Helper.deleteFile(oldFilePath);
+                }
 
                 if (Helper.saveFile(part.getInputStream(), path)) {
                     out.println("Profile update successfully");
@@ -66,7 +76,8 @@ public class EditServlet extends HttpServlet {
                     httpSession.setAttribute("msg", msg);
 
                 } else {
-                    Message msg = new Message("Something went wrong!!! Failed to Update profile", "error","alert-danger");
+                    Message msg = new Message("Something went wrong!!! Failed to Update profile", "error",
+                            "alert-danger");
                     httpSession.setAttribute("msg", msg);
 
                 }
@@ -81,7 +92,6 @@ public class EditServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-        
 
     }
 
